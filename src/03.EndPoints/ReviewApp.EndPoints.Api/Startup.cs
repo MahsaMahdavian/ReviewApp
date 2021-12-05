@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using ReviewApp.Infra.Data.Sql;
+using ReviewApp.Infra.Data.Sql.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,7 @@ namespace ReviewApp.EndPoints.Api
 
             services.AddControllers();
             services.AddDbContext<ReviewAppContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
+            services.AddScoped<IUnitOfWork, RewiewUnitOfWork>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ReviewApp.EndPoints.Api", Version = "v1" });

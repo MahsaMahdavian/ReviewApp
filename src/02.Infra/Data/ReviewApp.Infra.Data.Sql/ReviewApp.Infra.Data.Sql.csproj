@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\01.Core\ReviewApp.Core.Abstraction\ReviewApp.Core.Abstraction.csproj" />
     <ProjectReference Include="..\..\..\01.Core\ReviewApp.Core.Domain\ReviewApp.Core.Domain.csproj" />
   </ItemGroup>
 

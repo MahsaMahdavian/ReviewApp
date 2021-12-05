@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ReviewApp.Infra.Data.Sql
+namespace ReviewApp.Infra.Data.Sql.Common
 {
    public class ReviewAppContext : DbContext
     {
@@ -15,7 +15,10 @@ namespace ReviewApp.Infra.Data.Sql
         {
            
         }
-    
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
 
         public DbSet<Post> Posts { get; set; }
         public DbSet<User> Users { get; set; }

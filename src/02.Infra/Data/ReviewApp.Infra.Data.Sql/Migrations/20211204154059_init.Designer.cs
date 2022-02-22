@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ReviewApp.Infra.Data.Sql;
+using ReviewApp.Infra.Data.Sql.Common;
 
 namespace ReviewApp.Infra.Data.Sql.Migrations
 {

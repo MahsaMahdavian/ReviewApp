@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using ReviewApp.Core.Abstraction.Repository;
 using ReviewApp.Infra.Data.Sql;
 using ReviewApp.Infra.Data.Sql.Common;
 using System;
@@ -32,7 +33,7 @@ namespace ReviewApp.EndPoints.Api
 
             services.AddControllers();
             services.AddDbContext<ReviewAppContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
-            services.AddScoped<IUnitOfWork, RewiewUnitOfWork>();
+            services.AddScoped<IRewiewUnitOfWork, RewiewUnitOfWork>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ReviewApp.EndPoints.Api", Version = "v1" });

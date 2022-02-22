@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ReviewApp.Core.Abstraction.Repository
 {
-    public interface IRepositoryBase<TEntity>
+    public interface IRepositoryBase<TEntity> where TEntity:class
     {
         Task<IEnumerable<TEntity>> FindAllAsync();
         Task<TEntity> FindByIDAsync(Object id);

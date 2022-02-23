@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ReviewApp.Core.Abstraction.Repository;
-using ReviewApp.Infra.Data.Sql.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,13 +15,11 @@ namespace ReviewApp.Infra.Data.Sql.Repository
     public class Repositorybase<TEntity> : IRepositoryBase<TEntity> where TEntity : class 
 
     {
-        protected ReviewAppContext _Context { get; set; }
         private DbSet<TEntity> _dbSet;
     
-        public Repositorybase(ReviewAppContext Context)
+        public Repositorybase(DbContext Context)
         {
-            _Context = Context;
-            _dbSet = _Context.Set<TEntity>();
+            _dbSet = Context.Set<TEntity>();
         }
         public int CountEntities()
         {
@@ -46,7 +43,7 @@ namespace ReviewApp.Infra.Data.Sql.Repository
 
         public async Task<IEnumerable<TEntity>> FindByConditionAsync(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, params Expression<Func<TEntity, object>>[] includes)
         {
-            IQueryable<TEntity> query = _Context.Set<TEntity>();
+            IQueryable<TEntity> query = _dbSet;
             foreach (var include in includes)
             {
                 query = query.Include(include);

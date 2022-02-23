@@ -14,14 +14,15 @@ namespace ReviewApp.Infra.Data.Sql.Common
     public class RewiewUnitOfWork : IRewiewUnitOfWork
     {
         public ReviewAppContext _Context { get; set; }
-        public IPostRepository Posts { get; set; }
-        //write all repository here
+        
+       
         public RewiewUnitOfWork(ReviewAppContext context)
         {
            _Context = context;
-            Posts = new PostRepository(context);
-            //write all repository here
+         
         }
+           public IPostRepository Posts=> new PostRepository(_Context);
+        //write all repository here
         public async Task Commit()
         {
             await _Context.SaveChangesAsync();

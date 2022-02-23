@@ -11,7 +11,7 @@ namespace ReviewApp.Core.Abstraction.Repository
     {
         //IRepositoryBase<TEntity> Repositorybase<TEntity>() where TEntity : class;
 
-       public IPostRepository Posts { get; set; }
+       public IPostRepository Posts { get;}
         // write all repository
         Task Commit();
     }
